@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora IMC</title>
+</head>
+<body>
+  <!---->
+  <div class="esconder" id="alert">
+    <p>Digite somente números</p>
+  </div>
+  <!---->
+  <main>
+    <!---->
+    <form>
+        <h1>Cálculo de IMC</h1>
+        <label for="peso">Peso (Kg)</label>
+        <input type="number" name="peso" id="peso" placeholder="60">
+        <label for="altura">Altura (m)</label>
+        <input type="number" name="altura" id="altura" placeholder="170">
+        <button>Calcular IMC <img src="img/seta.svg" alt="seta_para_direita"></button>
+    </form>
+    <!--div da opacity e resultado-->
+  </main>
+    <div class="resultado esconder">
+      <div>
+        <img id="botao2" src="img/fechar.svg" alt="fechar_pag">
+        <p id="mostrarResul"></p>
+      </div>
+    </div>
+  <script>
+    //para cancelar o envio do formulario
+    const form = document.getElementsByTagName('form')[0]
+    form.addEventListener('submit',function(event){
+      event.preventDefault()//esse event recebe todas as propriedades e metodos, so submit e esta relacionado a variavel form, que por sua vez a variavel form esta relacionada ao button
+    })
+    /*cod começa aqui o de cima e para evitar o submit do formulario*/
+    //function da conta IMC
+    function calcIMC(){
+      let altura = document.getElementById('altura').value;//ñ pode esquecer o .value para pegar no input
+      let peso = document.getElementById('peso').value;
+      if (Number.isNaN(parseFloat(altura)) || Number.isNaN(parseFloat(peso))){/*if para verificar se no box foi digitado um num*/
+        document.getElementById('alert').classList.remove('esconder')
+      }else{
+        let resul = peso/(altura**2)*10000
+        document.getElementById('mostrarResul').innerText = `Seu IMC é de ${resul.toFixed(2)}`
+        addZ_index()
+      }
+    }
+    /*function para add a class de sumir*/
+    function addZ_index(){
+      document.getElementsByClassName('resultado')[0].classList.toggle('esconder')
+    }
+    /*Function para trocar a cor*/
+    function colorFocus(){
+      inpPeso.style.color = '#212529';
+      inpAltura.style.color = '#212529';
+    }
+    //evento click da soma
+    const botao = document.getElementsByTagName('button')[0]
+    botao.addEventListener('click',calcIMC)
+    /*Para trocar de color no input selecionado*/
+    const inpPeso = document.getElementById('peso')
+    const inpAltura = document.getElementById('altura')
+    inpPeso.addEventListener('focus',colorFocus())
+    inpAltura.addEventListener('focus',colorFocus())
+    /*Parte de fechar o resultado*/
+    const botao2 = document.getElementById('botao2')
+    botao2.addEventListener('click',addZ_index)
+  </script>
+</body>
+</html>

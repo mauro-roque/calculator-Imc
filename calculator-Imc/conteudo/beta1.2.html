@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="altura">Altura</label>
+        <input type="number" name="altura" id="altura">
+        <label for="peso">Peso</label>
+        <input type="number" name="peso" id="peso">
+        <button>Click aqui</button>
+    </form>
+    <p id="exibirResul"></p>
+
+    <script>
+      const form = document.getElementsByTagName('form')[0]
+      form.addEventListener('submit',function(event){
+        event.preventDefault()//esse event recebe todas as propriedades e metodos, so submit e esta relacionado a variavel form, que por sua vez a variavel form esta relacionada ao button
+      })
+      function calcIMC(){
+        let altura = document.getElementById('altura').value;//ñ pode esquecer o .value para pegar no input
+        let peso = document.getElementById('peso').value;
+        let resul = peso/(altura**2)*10000
+        document.getElementById('exibirResul').innerText = `${resul}`
+      }
+      const botao = document.getElementsByTagName('button')[0]
+      botao.addEventListener('click',calcIMC)
+    </script>
+</body>
+</html>

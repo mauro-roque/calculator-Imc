@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/*font-family: 'Roboto', sans-serif;*/
+/*Global*/
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+:root{
+    /*Tam Fonts*/
+    font-size: 62.5%;
+    /*Fonts*/
+    --font_padrao:'Roboto', sans-serif;
+    /*Colors*/
+    --bk-body:#040924;
+    --bk-input:#DCE2E9;
+    --bk-botao:#02799D;
+    --bor-input:rgba(73, 80, 87, 0.3);
+    --bor-inputFocus:#00709F;
+    --cor-font1-input:rgba(73, 80, 87, 0.5);
+    --cor-resul:#0C3440;
+}
+/**/
+main{
+    max-width: 100%;
+    height: 100vh;
+    padding-top: 13.0rem;
+    background-color: var(--bk-body);
+}
+/**/
+form{
+    max-width: 430px;
+    height: 440px;
+    margin: 0 auto 0 auto;
+    background-color: white;
+    border-radius: 0.6rem;
+
+    padding: 5.0rem 6.4rem 6.4rem 6.4rem;
+}
+form h1{
+    font: bold 3.2rem var(--font_padrao);
+    text-align: left;
+    margin-bottom: 3.2rem;
+}
+/**/
+form label{
+    display: block;
+    font: normal 1.4rem var(--font_padrao);
+    margin-bottom: 0.8rem;
+}
+form input{
+    min-width: 100%;
+    height: 6.0rem;
+    padding: 1.6rem;
+    border-radius: 0.4rem;
+    background-color: var(--bk-input);
+    border: 1px solid var(--bor-input);
+
+    font: normal 1.6rem var(--font_padrao);
+    color: var(--Cor-font1-input);
+    outline: 0; /*outline e para remover o berder que o input tem originalmente*/
+}
+input:focus{
+    border: 1px solid var(--bor-inputFocus);
+}
+input + label{/*var dar esse espaço em um input que tiver label dps do input*/
+    margin-top: 0.8rem;
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 100%;
+    height: 6.0rem;
+    margin: 3.2rem auto 0 auto;
+    border-radius: 0.4rem;
+    background-color: var(--bk-botao);
+
+    font: normal 1.6rem var(--font_padrao);
+    color: white;
+
+    transition: 5ms;
+}
+button:hover{
+    background-color: #025a75;
+}
+button img{
+    margin-left: 0.8rem;
+}
+/*Resultado*/
+.resultado{
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    min-width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+}
+.esconder{
+    z-index: -1;/*mudar para -1 dps*/
+}
+.resultado div{
+    position: absolute;/*para centralizar*/
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    min-width: 363px;
+    height: 152px;
+    padding: 4.8rem 6.4rem 6.4rem;
+    border-radius: 0.6rem;
+    background-color: white;
+}
+.resultado div > p{
+    font: bold 3.2rem var(--font_padrao);
+    color: var(--cor-resul);
+}
+.resultado div > img{
+    position: absolute;
+    top: 15%;
+    left: 90%;
+}
+/*Alert style*/
+#alert{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 40px;
+    background-color: #F03E3E;
+}
+#alert p{
+    font: bold 1.6rem var(--font_padrao);
+    color: white;
+}
